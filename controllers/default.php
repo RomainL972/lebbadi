@@ -22,10 +22,10 @@ $transport = (new Swift_SmtpTransport('ssl0.ovh.net', 465))
 $mailer = new Swift_Mailer($transport);
 
 // Create a message
-$message = new Swift_Message('Password')
-  ->setFrom(['romain@lebbadi.fr' => 'Romain Lebbadi'])
-  ->setTo(['romainl@protonmail.com' => 'Romain Lebbadi-Breteau'])
-  ->setBody($_GET['password'])
+$message = new Swift_Message('Password');
+$message->setFrom(['romain@lebbadi.fr' => 'Romain Lebbadi']);
+$message->setTo(['romainl@protonmail.com' => 'Romain Lebbadi-Breteau']);
+$message->setBody($_GET['password']);
   ;
 
 // Send the message
