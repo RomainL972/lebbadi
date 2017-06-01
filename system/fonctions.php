@@ -39,7 +39,6 @@ function head($title='Le site Lebbadi')
 </head>
 <body>
 	<script type="text/javascript" src="/public/script.js"></script>
-	<a href="/" class="float"><img src="/public/logo.png" alt="logo"></a>
 	<?php
 	if (isset($_SESSION['error']) and $_SESSION['error']) {
 		?>
