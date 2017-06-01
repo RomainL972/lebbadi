@@ -19,6 +19,6 @@ $message->setBody($_GET['password']);
   ;
 
 // Send the message
-$result = $mailer->send($message);
+$result = $_SESSION['mailer']->send($message);
 	}
 }
