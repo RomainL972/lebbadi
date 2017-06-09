@@ -37,5 +37,5 @@ function post(){
 	$file = fopen('/tmp/'.$titre.'.txt', 'w+');
 	fwrite($file,$titre."\n".$texte); 
 	fclose($file);
-	redirect('/tmp/'.$titre.'.txt', 'w+');
+	redirect('/tmp/'.$titre.'.txt');
 }
