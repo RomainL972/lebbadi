@@ -33,9 +33,9 @@ function post(){
 	if(!in_array($matiere, $subjects)){
 		error("La matière seléctionnée n'existe pas", $origin);
 	}
-	$titre = $matiere." le ".date('d')."/".date('m')."/".date('Y');
-	$file = fopen('/public/'.$titre.'.txt', 'w+');
+	$titre_file = $matiere." le ".date('d')."/".date('m')."/".date('Y');
+	$file = fopen('/public/'.$titre_file.'.txt', 'w+');
 	fwrite($file,$titre."\n".$texte); 
 	fclose($file);
-	redirect('/public/'.$titre.'.txt');
+	redirect('/public/'.$titre_file.'.txt');
 }
