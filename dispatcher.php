@@ -13,7 +13,11 @@ if (!file_exists('controllers/'.$controller.'.php')) {
 
 require_once 'controllers/'.$controller.'.php';
 
-if (!function_exists($action)) {
+if ($controller == 'kindle' && !function_exists($action)) {
+	$action = 'file_get';
+}
+
+else if (!function_exists($action)) {
 	error('La fonction n\'existe pas');
 }
 

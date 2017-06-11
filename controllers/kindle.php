@@ -37,5 +37,18 @@ function post(){
 	$file = fopen('/public/'.$titre_file.'.txt', 'w+');
 	fwrite($file,$titre."\n".$texte); 
 	fclose($file);
-	redirect('/public/'.$titre_file.'.txt');
+	redirect('/kindle/'.$titre_file.'.txt?texte='.$texte.'&titre='.$titre);
+}
+
+function file_get()
+{
+	extract($_GET, EXTR_SKIP);
+	$origin = '/kindle';
+	if (!isset($titre, $texte)) {
+		error("Le formulaire est incorrect", $origin);
+	}
+	if(empty($titre) or empty($texte)){
+		error("Un des champs est vide", $origin);
+	}
+	echo $titre."\n\n".$texte;
 }
