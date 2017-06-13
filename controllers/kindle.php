@@ -34,9 +34,6 @@ function post(){
 		error("La matière seléctionnée n'existe pas", $origin);
 	}
 	$titre_file = $matiere." le ".date('d')."_".date('m')."_".date('Y');
-	$file = fopen('/public/'.$titre_file.'.txt', 'w+');
-	fwrite($file,$titre."\n".$texte); 
-	fclose($file);
 	redirect('/kindle/'.$titre_file.'.txt?texte='.$texte.'&titre='.$titre);
 }
 

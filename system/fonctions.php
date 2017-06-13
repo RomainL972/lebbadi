@@ -22,6 +22,7 @@ function success($message='', $redirect='/', $line=NULL, $file=NULL)
 function redirect($to='/')
 {
 	header('Location:'.$to);
+	die();
 }
 
 function head($title='Le site Lebbadi')
