@@ -33,20 +33,5 @@ function post(){
 	if(!in_array($matiere, $subjects)){
 		error("La matière seléctionnée n'existe pas", $origin);
 	}
-	$titre_file = $matiere." le ".date('d')."_".date('m')."_".date('Y');
-	redirect('/kindle/'.$titre_file.'.txt?texte='.$texte.'&titre='.$titre);
-}
-
-function file_get()
-{
-	header('Content-Type:text/plain');
-	extract($_GET, EXTR_SKIP);
-	$origin = '/kindle';
-	if (!isset($titre, $texte)) {
-		error("Le formulaire est incorrect", $origin);
-	}
-	if(empty($titre) or empty($texte)){
-		error("Un des champs est vide", $origin);
-	}
-	echo $titre."\n\n".$texte;
+	query('INSERT INTO cours_kindle(`subject`, `time`, `titre`, `texte`) VALUES (?, NOW(), ?, ?)', [$matiere, $titre, $texte]);
 }
