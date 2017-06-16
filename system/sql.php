@@ -13,12 +13,39 @@ function sql_connect()
 
 function query($req, $content=NULL)
 {
+	function makeValuesReferenced(&$arr)
+    {
+        $refs = array();
+        foreach($arr as $key => $value)
+            $refs[$key] = &$arr[$key];
+        return $refs;
+    }
+
+    function paramtypes($val)
+    {
+            $types = '';                        //initial sting with types
+            foreach($val as $para) 
+            {     
+                if(is_int($para)) {
+                    $types .= 'i';              //integer
+                } elseif (is_float($para)) {
+                    $types .= 'd';              //double
+                } elseif (is_string($para)) {
+                    $types .= 's';              //string
+                } else {
+                    $types .= 'b';              //blob and unknown
+                }
+            }
+            return $types;
+    }
+
 	$sql = sql_connect();
 	if (is_null($content)) {
 		return $sql->query($req);
 	}
 	$req = $sql->prepare($req);
-	call_user_func([$req, 'bind_param'], $content);
+	$content = array_merge([paramtypes($content)], $content);
+	call_user_func_array([$req, 'bind_param'], makeValuesReferenced($content));
 	$req->execute();
 	return $req->get_result();
 }

@@ -15,7 +15,7 @@ function index(){
 		}
 		?>
 	</select></p>
-	<p><input type="submit" value="Télécharger"></p>
+	<p><input type="submit" value="Envoyer"></p>
 </form>
 	<?php
 }
@@ -34,4 +34,5 @@ function post(){
 		error("La matière seléctionnée n'existe pas", $origin);
 	}
 	query('INSERT INTO cours_kindle(`subject`, `time`, `titre`, `texte`) VALUES (?, NOW(), ?, ?)', [$matiere, $titre, $texte]);
+	success('Le cours a été enregistré!', '/kindle')
 }

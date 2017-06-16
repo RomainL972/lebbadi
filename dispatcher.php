@@ -13,7 +13,7 @@ if (!file_exists('controllers/'.$controller.'.php')) {
 
 require_once 'controllers/'.$controller.'.php';
 
-else if (!function_exists($action)) {
+if (!function_exists($action)) {
 	error('La fonction n\'existe pas');
 }
 
