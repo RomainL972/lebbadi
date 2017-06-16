@@ -39,6 +39,7 @@ function post(){
 
 function file_get()
 {
+	header('Content-Type:text/plain');
 	extract($_GET, EXTR_SKIP);
 	$origin = '/kindle';
 	if (!isset($titre, $texte)) {
