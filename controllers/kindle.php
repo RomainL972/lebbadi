@@ -34,5 +34,5 @@ function post(){
 		error("La matière seléctionnée n'existe pas", $origin);
 	}
 	query('INSERT INTO cours_kindle(`subject`, `time`, `titre`, `texte`) VALUES (?, NOW(), ?, ?)', [$matiere, $titre, $texte]);
-	success('Le cours a été enregistré!', '/kindle')
+	success('Le cours a été enregistré!', '/kindle');
 }
