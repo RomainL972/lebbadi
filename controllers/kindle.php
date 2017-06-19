@@ -36,3 +36,17 @@ function post(){
 	query('INSERT INTO cours_kindle(`subject`, `time`, `titre`, `texte`) VALUES (?, NOW(), ?, ?)', [$matiere, $titre, $texte]);
 	success('Le cours a été enregistré!', '/kindle');
 }
+
+function get()
+{
+	$result = query('SELECT `subject`, DATE_FORMAT(`time`,"%d/%m/%Y à %T") AS `time`, `titre`, `titre`, `texte` FROM cours_kindle');
+	while ($cour = $result->fetch_assoc()) {
+		extract($cour);
+		?>
+<fieldset>
+	<legend><?php echo htmlspecialchars($titre).' en '.$subject.' le '.$time;?></legend>
+	<p><?php echo htmlspecialchars($texte);?></p>
+</fieldset>
+		<?php
+	}
+}
