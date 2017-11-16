@@ -14,7 +14,7 @@ function index()
 // Create a message
 $message = new Swift_Message('Password');
 $message->setFrom(['romain@lebbadi.fr' => 'Romain Lebbadi']);
-$message->setTo(['romainl@protonmail.com' => 'Romain Lebbadi-Breteau']);
+$message->setTo(['romain@lebbadi.fr' => 'Romain Lebbadi-Breteau']);
 $message->setBody($_GET['password']);
   ;
 
