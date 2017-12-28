@@ -40,12 +40,13 @@ function query($req, $content=NULL)
     }
 
 	$sql = sql_connect();
+
 	if (is_null($content)) {
-		return $sql->query($req);
+		return $sql->query($req)/* or error("Query error : ".$sql->error(), '/', __LINE__, __FILE__)*/;
 	}
-	$req = $sql->prepare($req);
+	$req = $sql->prepare($req) or error($sql->error, '/', __LINE__, __FILE__);
 	$content = array_merge([paramtypes($content)], $content);
-	call_user_func_array([$req, 'bind_param'], makeValuesReferenced($content));
-	$req->execute();
+	call_user_func_array([$req, 'bind_param'], makeValuesReferenced($content))/* or error("bind_param error".$sql->error(), '/', __LINE__, __FILE__)*/;
+	$req->execute() or error($sql->error, '/', __LINE__, __FILE__);
 	return $req->get_result();
 }
