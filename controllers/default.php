@@ -10,6 +10,7 @@ function index()
 <li><a href="mailto:technical-assistance@lebbadi.fr">Adresse e-mail pour assistance sur un ordinateur</a></li>
 <li><a href="/kindle">Cours Kindle</a></li>
 <li><a href="/mails-passwords">Changement de mot de passe des mails @lebbadi.fr</a></li>
+<li><a href="/public/pubkey.asc">Ma clé publique GnuPG</a></li>
 	<?php
 	foot();
 	if (isset($_GET['password'])) {
