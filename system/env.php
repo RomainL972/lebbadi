@@ -1,13 +1,16 @@
 <?php
 session_start();
-date_default_timezone_set('America/Martinique');
+date_default_timezone_set(getenv('TIMEZONE'));
 
 require_once 'vendor/autoload.php';
 
 // Create the Transport
-$transport = new Swift_SmtpTransport('ssl0.ovh.net', 465, "ssl");
-$transport->setUsername('romain@lebbadi.fr');
-$transport->setPassword('JADOreovh');
+$args = [getenv('EMAIL_HOST'), getenv('EMAIL_PORT')]
+if(getenv('EMAIL_SSL'))
+	$args[2] = "ssl"
+$transport = call_user_func_array(new Swift_SmtpTransport, $args);
+$transport->setUsername(getenv('EMAIL_ADDRESS_FROM'));
+$transport->setPassword(getenv('EMAIL_PASSWORD'));
 
 // Create the Mailer using your created Transport
 $_SESSION['mailer'] = new Swift_Mailer($transport);

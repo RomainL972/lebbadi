@@ -25,7 +25,7 @@ function redirect($to='/')
 	die();
 }
 
-function head($title='Le site Lebbadi')
+function head($title='Le site Lebbadi - Lebbadi website')
 {
 	?>
 <!DOCTYPE html>
