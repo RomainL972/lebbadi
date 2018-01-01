@@ -13,3 +13,4 @@ The website uses a few environment variables to keep the Database and e-mail pas
 * EMAIL_HOST - the e-mail address provider SMTP server port
 * EMAIL_SSL - set to 1 if the SMTP server is using SSL
 * EMAIL_PASSWORD - the e-mail address password
+* TIMEZONE - your timezone (optional)
