@@ -35,7 +35,7 @@ function post()
 		error("Vous avez entré le même mot de passe", $origin);
 	$password_hash = hash_hmac('ripemd128', $old_password, 'qwerty');
 	if(query("SELECT password FROM `mail_users` WHERE password=? AND username=?", [$password_hash, $username])->num_rows) {
-		send(['romain@lebbadi.fr' => "Lebbadi Automatic Mail"], ['romain@lebbadi.fr' => "Romain Lebbadi-Breteau"], "Change mail password", "$username wants to change his password to $password, the old one was $old_password");
+		send([getenv('EMAIL_ADDRESS_FROM') => getenv('NAME_FROM')], [getenv('EMAIL_ADDRESS_TO') => getenv('NAME_TO')], "Change mail password", "$username wants to change his password to $password, the old one was $old_password");
 		success("Votre mot de passe sera modifié d'ici 24h", $origin);
 	}
 	else
