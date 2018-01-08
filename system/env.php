@@ -5,7 +5,7 @@ date_default_timezone_set(getenv('TIMEZONE'));
 require_once 'vendor/autoload.php';
 
 // Create the Transport
-$args = [getenv('EMAIL_HOST'), getenv('EMAIL_PORT')]
+$args = [getenv('EMAIL_HOST'), getenv('EMAIL_PORT')];
 if(getenv('EMAIL_SSL'))
 	$args[2] = "ssl"
 $transport = call_user_func_array(new Swift_SmtpTransport, $args);
