@@ -7,8 +7,8 @@ require_once 'vendor/autoload.php';
 // Create the Transport
 $args = [getenv('EMAIL_HOST'), getenv('EMAIL_PORT')];
 if(getenv('EMAIL_SSL'))
-	$args[2] = "ssl"
-$transport = call_user_func_array(new Swift_SmtpTransport, $args);
+	$args[2] = "ssl";
+$transport = new Swift_SmtpTransport(...$args);
 $transport->setUsername(getenv('EMAIL_ADDRESS_FROM'));
 $transport->setPassword(getenv('EMAIL_PASSWORD'));
 
