@@ -15,5 +15,4 @@ function index()
 </ul>
 	<?php
 	foot();
-	}
 }
