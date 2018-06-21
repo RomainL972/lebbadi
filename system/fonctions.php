@@ -29,7 +29,7 @@ function head($title='Le site Lebbadi - Lebbadi website')
 {
 	?>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 	<title><?php echo $title;?></title>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
@@ -39,17 +39,17 @@ function head($title='Le site Lebbadi - Lebbadi website')
 	<link rel="icon" type="image/png" href="/public/logo.png">
 </head>
 <body>
-	<script type="text/javascript" src="/public/script.js"></script>
+	<script src="/public/script.js"></script>
 	<?php
 	if (isset($_SESSION['error']) and $_SESSION['error']) {
 		?>
-	<script type="text/javascript">$.notify("<?php echo $_SESSION['error']?>", "error")</script>
+	<script>$.notify("<?php echo $_SESSION['error']?>", "error")</script>
 		<?php
 		$_SESSION['error'] = NULL;
 	}
 	if (isset($_SESSION['success']) and $_SESSION['success']) {
 		?>
-	<script type="text/javascript">$.notify("<?php echo $_SESSION['success']?>", "success")</script>
+	<script>$.notify("<?php echo $_SESSION['success']?>", "success")</script>
 		<?php
 		$_SESSION['success'] = NULL;
 	}
