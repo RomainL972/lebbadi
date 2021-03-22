@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.site_lebbadi.rule=Host(`lebbadi.fr`) || Host(`www.lebbadi.fr`)"
+      - "traefik.http.routers.site_lebbadi.tls=true"
+      - "traefik.http.routers.site_lebbadi.tls.certresolver=myresolver"
+      - "com.centurylinklabs.watchtower.enable=false"
+
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile-php

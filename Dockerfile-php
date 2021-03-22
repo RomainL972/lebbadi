@@ -1,2 +1,2 @@
-FROM nginx:alpine
+FROM php:7-fpm-alpine
 COPY www /usr/share/nginx/html

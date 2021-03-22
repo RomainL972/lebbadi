@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,7 +44,7 @@ https://templatemo.com/tm-531-reflux
             </div>
             <div class="author-content">
               <h4>Romain Lebbadi-Breteau</h4>
-              <span>Computer Science Student</span>
+              <span>Computer Engineering Student</span>
             </div>
             <nav class="main-nav" role="navigation">
               <ul class="main-menu">
@@ -71,7 +74,7 @@ https://templatemo.com/tm-531-reflux
               </ul>
             </div>
             <div class="copyright-text">
-              <p>Copyright 2020 Romain Lebbadi-Breteau</p>
+              <p>Copyright 2021 Romain Lebbadi-Breteau</p>
             </div>
           </div>
         </div>
@@ -79,7 +82,13 @@ https://templatemo.com/tm-531-reflux
 
       <section class="section about-me" data-section="section1">
         <div class="container">
-          <div class="section-heading">
+	  <div class="section-heading">
+<?php
+if (!empty($_SESSION["msg"])) {
+	echo "<div class=\"alert alert-primary\" role=\"alert\">${_SESSION["msg"]}</div>";
+	$_SESSION["msg"] = NULL;
+}
+?>
             <h2>About Me</h2>
             <div class="line-dec"></div>
             <span
@@ -87,6 +96,7 @@ https://templatemo.com/tm-531-reflux
               By the way, <strong>Linux &gt; Windows</strong>.</span
             >
           </div>
+          <?php /*
           <!-- <div class="left-image-post">
             <div class="row">
               <div class="col-md-6">
@@ -134,7 +144,7 @@ https://templatemo.com/tm-531-reflux
                 </div>
               </div>
             </div>
-          </div> -->
+        </div> --> */ ?>
         </div>
       </section>
 
@@ -201,7 +211,7 @@ https://templatemo.com/tm-531-reflux
 		    <li><a href="//kreyolgym.fr">Kréyol Gym website</a></li>
 	    </ul>
           </div>
-          <!-- <div class="row">
+          <?php /* <div class="row">
             <div class="isotope-wrapper">
               <form class="isotope-toolbar">
                 <label
@@ -354,7 +364,7 @@ https://templatemo.com/tm-531-reflux
                 </div>
               </div>
             </div>
-          </div> -->
+          </div> */ ?>
         </div>
       </section>
 
@@ -370,7 +380,7 @@ https://templatemo.com/tm-531-reflux
           <div class="row">
             <div class="right-content">
               <div class="container">
-                <form id="contact" action="" method="post">
+                <form id="contact" action="contact.php" method="post">
                   <div class="row">
                     <div class="col-md-6">
                       <fieldset>
