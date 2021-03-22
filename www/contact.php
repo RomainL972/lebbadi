@@ -17,10 +17,30 @@ function redirect($url) {
 	die();
 }
 
-if (empty($_POST["name"]) || empty($_POST["email"]) || empty($_POST["subject"]) || empty($_POST["message"])) {
+if (empty($_POST["name"]) || empty($_POST["email"]) || empty($_POST["subject"]) || empty($_POST["message"]) || empty($_POST["h-captcha-response"])) {
 	$_SESSION["msg"] = "You didn't fill all the fields";
 	redirect("/");
 }
+
+$data = array(
+            'secret' => HCAPTCHA_SECRET,
+            'response' => $_POST['h-captcha-response']
+        );
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "https://hcaptcha.com/siteverify");
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($ch);
+
+$responseData = json_decode($response);
+if (!$responseData->success) {
+	$_SESSION["msg"] = "The Captcha wasn't completed";
+	redirect("/");
+}
+
+curl_close($ch);
 
 $name = htmlspecialchars($_POST["name"]);
 $email = htmlspecialchars($_POST["email"]);

@@ -432,6 +432,7 @@ if (!empty($_SESSION["msg"])) {
                     </div>
                     <div class="col-md-12">
                       <fieldset>
+                        <div class="h-captcha" data-sitekey="f08fe231-3382-4efb-a8b4-602ee753b362"></div>
                         <button type="submit" id="form-submit" class="button">
                           Send Message
                         </button>
@@ -447,6 +448,7 @@ if (!empty($_SESSION["msg"])) {
     </div>
 
     <!-- Scripts -->
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
