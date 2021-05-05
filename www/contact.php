@@ -56,11 +56,11 @@ try {
 
 	$mail->Host       = SMTP_HOST; // SMTP server example
 	$mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
-	$mail->SMTPAuth   = true;                  // enable SMTP authentication
-	$mail->Port       = 465;                    // set the SMTP port for the GMAIL server
-	$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-	$mail->Username   = SMTP_USER; // SMTP account username example
-	$mail->Password   = SMTP_PASS;        // SMTP account password example
+	$mail->SMTPAuth   = false;                  // enable SMTP authentication
+	$mail->Port       = 25;                    // set the SMTP port for the GMAIL server
+	#$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+	#$mail->Username   = SMTP_USER; // SMTP account username example
+	#$mail->Password   = SMTP_PASS;        // SMTP account password example
 
 	// Content
 	$mail->isHTML(true);                                  // Set email format to HTML
