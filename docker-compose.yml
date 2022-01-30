@@ -12,6 +12,9 @@ services:
       - "traefik.http.routers.site_lebbadi.tls=true"
       - "traefik.http.routers.site_lebbadi.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=false"
+    networks:
+      - traefik_default
+      - default
 
   php:
     build:
@@ -20,3 +23,7 @@ services:
     restart: always
     labels:
       - "com.centurylinklabs.watchtower.enable=false"
+
+networks:
+  traefik_default:
+    external: true
