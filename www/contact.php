@@ -4,8 +4,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-error_reporting(0);
-ini_set('display_errors', 0);
+#error_reporting(0);
+#ini_set('display_errors', 0);
 
 require 'vendor/autoload.php';
 require_once 'env.php';
