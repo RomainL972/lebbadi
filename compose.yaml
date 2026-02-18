@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   web:
     build:
@@ -9,11 +7,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.site_lebbadi.rule=Host(`lebbadi.fr`) || Host(`www.lebbadi.fr`)"
-      - "traefik.http.routers.site_lebbadi.tls=true"
-      - "traefik.http.routers.site_lebbadi.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=false"
     networks:
-      - traefik_default
+      - traefik
       - default
 
   php:
@@ -25,10 +21,7 @@ services:
       - "com.centurylinklabs.watchtower.enable=false"
     networks:
       - default
-      - postfix_default
 
 networks:
-  traefik_default:
-    external: true
-  postfix_default:
+  traefik:
     external: true
